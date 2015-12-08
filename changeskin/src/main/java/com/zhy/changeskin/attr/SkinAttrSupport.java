@@ -1,6 +1,8 @@
 package com.zhy.changeskin.attr;
 
 import android.app.Activity;
+import android.content.res.TypedArray;
+import android.support.v4.content.res.TypedArrayUtils;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;

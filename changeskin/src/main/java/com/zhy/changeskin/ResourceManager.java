@@ -80,8 +80,9 @@ public class ResourceManager
 
     private String appendSuffix(String name)
     {
-        if (!TextUtils.isEmpty(mSuffix))
-            return name += "_" + mSuffix;
+        if (!TextUtils.isEmpty(mSuffix)) {
+            return name + "_" + mSuffix;
+        }
         return name;
     }
 
