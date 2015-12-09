@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zhy.changeskin.ResourceManager;
@@ -26,7 +27,6 @@ public enum SkinAttrType {
         @Override
         public void apply(View view, String resName) {
             int color = getResourceManager().getColor(resName);
-            if (color == -1) return;
             view.setBackgroundColor(color);
         }
     }, COLOR("textColor") {
@@ -43,6 +43,19 @@ public enum SkinAttrType {
                 Drawable drawable = getResourceManager().getDrawableByName(resName);
                 if (drawable == null) return;
                 ((ImageView) view).setImageDrawable(drawable);
+            }
+
+        }
+    }, DIVIDER_DRAWABLE("dividerDrawable") {
+        @Override
+        public void apply(View view, String resName) {
+            if (view instanceof ListView) {
+                Drawable drawable = getResourceManager().getDrawableByName(resName);
+                if (drawable == null) return;
+                ListView list = (ListView)view;
+                int dividerHeight = list.getDividerHeight();
+                list.setDivider(drawable);
+                list.setDividerHeight(dividerHeight);
             }
 
         }

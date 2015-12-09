@@ -262,6 +262,16 @@ public class SkinManager
         }
     }
 
+    public void apply(View view) {
+        List<SkinView> skinViews = new ArrayList<>();
+        SkinAttrSupport.addSkinViews(view, skinViews);
+        if (skinViews == null) return;
+        for (SkinView skinView : skinViews)
+        {
+            skinView.apply();
+        }
+    }
+
     public void register(final Activity activity)
     {
         mActivities.add(activity);
